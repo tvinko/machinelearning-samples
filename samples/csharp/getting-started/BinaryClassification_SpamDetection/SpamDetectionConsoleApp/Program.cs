@@ -74,7 +74,7 @@ namespace SpamDetectionConsoleApp
             ClassifyMessage(predictor, "Yes we should meet over the weekend!");
             ClassifyMessage(predictor, "you win pills and free entry vouchers");
 
-            Console.WriteLine("=============== End of process, hit any key to finish =============== ");
+            Console.WriteLine("=============== End of process. Hit any key to exit =============== ");
             Console.ReadLine();
         }
 

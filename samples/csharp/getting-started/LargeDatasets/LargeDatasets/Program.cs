@@ -74,7 +74,7 @@ namespace LargeDatasets
                 UrlPrediction predictionResult = predEngine.Predict(sampleData);
                 Console.WriteLine($"Single Prediction --> Actual value: {sampleData.LabelColumn} | Predicted value: {predictionResult.Prediction}");
             }
-            Console.WriteLine("====End of Process..Press any key to exit====");
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Console.ReadLine();
         }
 

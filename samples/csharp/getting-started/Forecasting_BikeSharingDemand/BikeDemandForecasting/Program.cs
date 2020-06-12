@@ -53,7 +53,8 @@ namespace BikeDemandForecasting
 
             Forecast(secondYearData, 7, forecastEngine, mlContext);
 
-            Console.ReadKey();
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
         static void Evaluate(IDataView testData, ITransformer model, MLContext mlContext)

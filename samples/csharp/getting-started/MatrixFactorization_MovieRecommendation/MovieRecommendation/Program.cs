@@ -77,8 +77,8 @@ namespace MovieRecommendation
 
             Movie movieService = new Movie();
             Console.WriteLine("For userId:" + predictionuserId + " movie rating prediction (1 - 5 stars) for movie:" + movieService.Get(predictionmovieId).movieTitle + " is:" + Math.Round(movieratingprediction.Score, 1));
-
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
+            
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Console.ReadLine();
         }
 

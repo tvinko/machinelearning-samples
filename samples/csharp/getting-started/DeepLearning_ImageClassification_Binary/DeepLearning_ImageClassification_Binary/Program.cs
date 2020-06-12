@@ -65,7 +65,7 @@ namespace DeepLearning_ImageClassification_Binary
 
             ClassifyImages(mlContext, testSet, trainedModel);
 
-            Console.ReadKey();
+            ConsoleHelper.ConsolePressAnyKey();
         }
 
         public static void ClassifySingleImage(MLContext mlContext, IDataView data, ITransformer trainedModel)

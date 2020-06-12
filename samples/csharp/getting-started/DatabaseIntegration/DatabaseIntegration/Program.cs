@@ -134,6 +134,7 @@ namespace DatabaseIntegration
             // Now that we have the predictions, calculate the metrics of those predictions and output the results.
             var metrics = mlContext.BinaryClassification.Evaluate(predictions);
             ConsoleHelper.PrintBinaryClassificationMetrics("Database Example", metrics);
+
             ConsoleHelper.ConsolePressAnyKey();
         }
     }

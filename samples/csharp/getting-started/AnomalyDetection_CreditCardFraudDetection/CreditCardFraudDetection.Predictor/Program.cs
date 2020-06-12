@@ -23,8 +23,8 @@ namespace CreditCardFraudDetection.Predictor
 
             modelPredictor.RunMultiplePredictions(numberOfPredictions: 5);
 
-            Console.WriteLine("=============== Press any key ===============");
-            Console.ReadKey();
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
 

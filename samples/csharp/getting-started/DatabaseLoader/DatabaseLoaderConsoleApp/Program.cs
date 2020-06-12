@@ -156,8 +156,7 @@ namespace DatabaseLoaderConsoleApp
             Console.WriteLine("... Detaching database from SQL localdb ...");
             DetachDatabase(connectionString);
 
-            Console.WriteLine("=============== Press any key ===============");
-            Console.ReadKey();
+            ConsoleHelper.ConsolePressAnyKey();
         }
 
         public static float Sigmoid(float x)

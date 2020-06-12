@@ -33,6 +33,7 @@ namespace CustomerSegmentation
                 Common.ConsoleHelper.ConsoleWriteException(ex.ToString());
             }
 
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Common.ConsoleHelper.ConsolePressAnyKey();
         }
 

@@ -65,7 +65,7 @@ namespace AdvancedTaxiFarePrediction
             // Save the re-fit model to a.ZIP file.
             SaveModel(mlContext, refitModel);
 
-            Console.WriteLine("Press any key to exit..");
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Console.ReadLine();
         }
 

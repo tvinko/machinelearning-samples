@@ -69,8 +69,9 @@ namespace ProductRecommender
                 });
 
             Console.WriteLine("\n For ProductID = 3 and  CoPurchaseProductID = 63 the predicted score is " + Math.Round(prediction.Score, 1));
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
-            Console.ReadKey();
+
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
         public static string GetAbsolutePath(string relativeDatasetPath)

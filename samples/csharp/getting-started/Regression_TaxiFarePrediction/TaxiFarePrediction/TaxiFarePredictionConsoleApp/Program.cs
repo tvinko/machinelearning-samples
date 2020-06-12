@@ -48,7 +48,7 @@ namespace Regression_TaxiFarePrediction
             // Paint regression distribution chart for a number of elements read from a Test DataSet file
             PlotRegressionChart(mlContext, TestDataPath, 100, args);
 
-            Console.WriteLine("Press any key to exit..");
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Console.ReadLine();
         }
 

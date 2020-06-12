@@ -38,8 +38,7 @@ namespace SpikeDetection
             //To detect persistent change in the pattern
             DetectChangepoint(size, dataView);
 
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
-
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Console.ReadLine();
         }
 

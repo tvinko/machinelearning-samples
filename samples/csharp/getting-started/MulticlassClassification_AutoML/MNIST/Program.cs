@@ -90,6 +90,9 @@ namespace MNIST
             {
                 Console.WriteLine(ex);
             }
+
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
         public static string GetAbsolutePath(string relativePath)

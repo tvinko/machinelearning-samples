@@ -35,8 +35,8 @@ namespace myApp
 
             DetectAnomalies(mlContext, dataView);
 
-            Console.WriteLine("\nPress any key to exit");
-            Console.Read();
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
 

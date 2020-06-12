@@ -77,6 +77,9 @@ namespace MulticlassClassification_Iris
             // STEP 6: Save/persist the trained model to a .ZIP file
             mlContext.Model.Save(trainedModel, trainingDataView.Schema, ModelPath);
             Console.WriteLine("The model is saved to {0}", ModelPath);
+
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
         private static void TestSomePredictions(MLContext mlContext)

@@ -89,7 +89,7 @@ namespace Clustering_Iris
 
             Console.WriteLine($"Cluster assigned for setosa flowers:" + resultprediction.SelectedClusterId);
           
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
+            Console.WriteLine("=============== End of process. Hit any key to exit ===============");
             Console.ReadKey();           
         }
 

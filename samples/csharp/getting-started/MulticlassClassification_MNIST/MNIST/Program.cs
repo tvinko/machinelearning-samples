@@ -86,6 +86,9 @@ namespace mnist
                 Console.WriteLine(ex.ToString());
                 //return null;
             }
+
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
+            Console.ReadLine();
         }
 
         public static string GetAbsolutePath(string relativePath)

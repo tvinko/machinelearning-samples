@@ -33,7 +33,7 @@ namespace SentimentAnalysis
             // Make a single test prediction loading the model from .ZIP file
             TestSinglePrediction(mlContext);
 
-            ConsoleHelper.ConsoleWriteHeader("=============== End of process, hit any key to finish ===============");
+            ConsoleHelper.ConsoleWriteHeader("=============== End of process. Hit any key to exit  ===============");
             Console.ReadKey();
         }
 

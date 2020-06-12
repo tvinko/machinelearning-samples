@@ -79,7 +79,7 @@ namespace WebRanking
                 Console.WriteLine(e.Message);
             }
 
-            Console.Write("Done!");
+            Console.WriteLine($"=============== End of process. Hit any key to exit ===============");
             Console.ReadLine();
         }
 

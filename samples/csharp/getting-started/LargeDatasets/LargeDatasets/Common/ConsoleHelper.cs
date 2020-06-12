@@ -253,7 +253,7 @@ namespace Common
             var defaultColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(" ");
-            Console.WriteLine("Press any key to finish.");
+            Console.WriteLine("End of process. Hit any key to exit");
             Console.ReadKey();
         }
 
