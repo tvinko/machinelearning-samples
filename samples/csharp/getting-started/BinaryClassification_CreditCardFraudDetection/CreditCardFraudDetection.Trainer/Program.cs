@@ -46,7 +46,7 @@ namespace CreditCardFraudDetection.Trainer
             // Save model
             SaveModel(mlContext, model, modelFilePath, trainingDataView.Schema);
 
-            Console.WriteLine("=============== Press any key ===============");
+            Console.WriteLine("=============== End of process. Hit any key to exit ===============");
             Console.ReadKey();
         }
 

@@ -27,7 +27,7 @@ namespace HeartDiseasePredictionConsoleApp
 
             TestPrediction(mlContext);
 
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
+            Console.WriteLine("=============== End of process. Hit any key to exit. ===============");
             Console.ReadKey();
         }
 
