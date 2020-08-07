@@ -29,8 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Data\hour_test.csv" Link="Data\hour_test.csv" />
-    <None Include="..\Data\hour_train.csv" Link="Data\hour_train.csv" />
+    <None Include="..\Data\hour_test.csv" Link="Data\hour_test.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Data\hour_train.csv" Link="Data\hour_train.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

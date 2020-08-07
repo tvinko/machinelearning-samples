@@ -7,24 +7,35 @@ using Microsoft.ML.Data;
 
 namespace BikeSharingDemand
 {
-    internal static class Program
+    public class Wrapper
     {
-        private static string ModelsLocation = @"../../../../MLModels";
+        //private static string ModelsLocation = @"../../../../MLModels";
 
-        private static string DatasetsLocation = @"../../../../Data";
-        private static string TrainingDataRelativePath = $"{DatasetsLocation}/hour_train.csv";
-        private static string TestDataRelativePath = $"{DatasetsLocation}/hour_test.csv";
+        //private static string DatasetsLocation = @"../../../../Data";
+        //private static string TrainingDataRelativePath = $"{DatasetsLocation}/hour_train.csv";
+        //private static string TestDataRelativePath = $"{DatasetsLocation}/hour_test.csv";
 
-        private static string TrainingDataLocation = GetAbsolutePath(TrainingDataRelativePath);
-        private static string TestDataLocation = GetAbsolutePath(TestDataRelativePath);
-        
-        static void Main(string[] args)
+        //private static string TrainingDataLocation = GetAbsolutePath(TrainingDataRelativePath);
+        //private static string TestDataLocation = GetAbsolutePath(TestDataRelativePath);
+
+        string TrainingDataLocation { get; set; } 
+        string TestDataLocation { get; set; } 
+        string ModelsLocation { get; set; }
+
+        public Wrapper(string TrainingDataLocation, string TestDataLocation, string ModelsLocation)
+        {
+            this.TrainingDataLocation = TrainingDataLocation;
+            this.TestDataLocation = TestDataLocation;
+            this.ModelsLocation = ModelsLocation;
+        }
+        public void Start()
         {
             // Create MLContext to be shared across the model creation workflow objects 
             // Set a random seed for repeatable/deterministic results across multiple trainings.
             var mlContext = new MLContext(seed: 0);
 
             // 1. Common data loading configuration
+            //C:\Zenodys\machinelearning-samples\samples\csharp\getting-started\Regression_BikeSharingDemand\BikeSharingDemand\BikeSharingDemandConsoleApp\bin\Debug\netcoreapp3.1\../../../../Data/hour_train.csv
             var trainingDataView = mlContext.Data.LoadFromTextFile<DemandObservation>(path: TrainingDataLocation, hasHeader:true, separatorChar: ',');
             var testDataView = mlContext.Data.LoadFromTextFile<DemandObservation>(path: TestDataLocation, hasHeader:true, separatorChar: ',');
 
@@ -71,11 +82,10 @@ namespace BikeSharingDemand
                 var metrics = mlContext.Regression.Evaluate(data:predictions, labelColumnName:"Label", scoreColumnName: "Score");               
                 ConsoleHelper.PrintRegressionMetrics(trainer.value.ToString(), metrics);
 
+                //../../../../MLModels
                 //Save the model file that can be used by any application
-                string modelRelativeLocation = $"{ModelsLocation}/{trainer.name}Model.zip";
-                string modelPath = GetAbsolutePath(modelRelativeLocation);
-                mlContext.Model.Save(trainedModel, trainingDataView.Schema, modelPath);
-                Console.WriteLine("The model is saved to {0}", modelPath);
+                mlContext.Model.Save(trainedModel, trainingDataView.Schema, $"{ModelsLocation}/{trainer.name}Model.zip");
+                Console.WriteLine("The model is saved to {0}", $"{ModelsLocation}/{trainer.name}Model.zip");
             }
 
             // 4. Try/test Predictions with the created models
@@ -85,8 +95,7 @@ namespace BikeSharingDemand
             foreach (var learner in regressionLearners)
             {
                 //Load current model from .ZIP file
-                string modelRelativeLocation = $"{ModelsLocation}/{learner.name}Model.zip";
-                string modelPath = GetAbsolutePath(modelRelativeLocation);
+                string modelPath = $"{ModelsLocation}/{learner.name}Model.zip";
                 ITransformer trainedModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
 
                 // Create prediction engine related to the loaded trained model
@@ -98,16 +107,6 @@ namespace BikeSharingDemand
             }
 
             Common.ConsoleHelper.ConsolePressAnyKey();
-        }
-
-        public static string GetAbsolutePath(string relativePath)
-        {
-            FileInfo _dataRoot = new FileInfo(typeof(Program).Assembly.Location);
-            string assemblyFolderPath = _dataRoot.Directory.FullName;
-
-            string fullPath = Path.Combine(assemblyFolderPath, relativePath);
-
-            return fullPath;
         }
     }
 }
