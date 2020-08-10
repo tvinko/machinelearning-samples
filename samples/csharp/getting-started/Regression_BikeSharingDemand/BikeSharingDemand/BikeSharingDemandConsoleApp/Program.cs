@@ -4,31 +4,35 @@ using System.IO;
 using BikeSharingDemand.DataStructures;
 using Common;
 using Microsoft.ML.Data;
+using System.Reflection;
 
 namespace BikeSharingDemand
 {
     public class Wrapper
     {
-        string TrainingDataLocation { get; set; } 
-        string TestDataLocation { get; set; } 
+        string TrainingDataLocation { get; set; }
+        string TestDataLocation { get; set; }
         string ModelsLocation { get; set; }
 
         public Wrapper(string TrainingDataLocation, string TestDataLocation, string ModelsLocation)
         {
-            this.TrainingDataLocation = TrainingDataLocation;
-            this.TestDataLocation = TestDataLocation;
-            this.ModelsLocation = ModelsLocation;
+            this.TrainingDataLocation = Path.Combine(Environment.CurrentDirectory, TrainingDataLocation);
+            this.TestDataLocation = Path.Combine(Environment.CurrentDirectory, TestDataLocation);
+            this.ModelsLocation = Path.Combine(Environment.CurrentDirectory, ModelsLocation);
         }
 
         public void Start()
         {
+            Console.WriteLine("Training data location: " + TrainingDataLocation);
+            Console.WriteLine("Test data location: " + TestDataLocation);
+            Console.WriteLine("Models location: " + ModelsLocation);
             // Create MLContext to be shared across the model creation workflow objects 
             // Set a random seed for repeatable/deterministic results across multiple trainings.
             var mlContext = new MLContext(seed: 0);
 
             // 1. Common data loading configuration
-            var trainingDataView = mlContext.Data.LoadFromTextFile<DemandObservation>(path: TrainingDataLocation, hasHeader:true, separatorChar: ',');
-            var testDataView = mlContext.Data.LoadFromTextFile<DemandObservation>(path: TestDataLocation, hasHeader:true, separatorChar: ',');
+            var trainingDataView = mlContext.Data.LoadFromTextFile<DemandObservation>(path: TrainingDataLocation, hasHeader: true, separatorChar: ',');
+            var testDataView = mlContext.Data.LoadFromTextFile<DemandObservation>(path: TestDataLocation, hasHeader: true, separatorChar: ',');
 
             // 2. Common data pre-process with pipeline data transformations
 
@@ -39,8 +43,8 @@ namespace BikeSharingDemand
                                                      nameof(DemandObservation.WorkingDay), nameof(DemandObservation.Weather), nameof(DemandObservation.Temperature),
                                                      nameof(DemandObservation.NormalizedTemperature), nameof(DemandObservation.Humidity), nameof(DemandObservation.Windspeed))
                                          .AppendCacheCheckpoint(mlContext);
-                                        // Use in-memory cache for small/medium datasets to lower training time. 
-                                        // Do NOT use it (remove .AppendCacheCheckpoint()) when handling very large datasets.
+            // Use in-memory cache for small/medium datasets to lower training time. 
+            // Do NOT use it (remove .AppendCacheCheckpoint()) when handling very large datasets.
 
             // (Optional) Peek data in training DataView after applying the ProcessPipeline's transformations  
             Common.ConsoleHelper.PeekDataViewInConsole(mlContext, trainingDataView, dataProcessPipeline, 10);
@@ -70,7 +74,7 @@ namespace BikeSharingDemand
 
                 Console.WriteLine("===== Evaluating Model's accuracy with Test data =====");
                 IDataView predictions = trainedModel.Transform(testDataView);
-                var metrics = mlContext.Regression.Evaluate(data:predictions, labelColumnName:"Label", scoreColumnName: "Score");               
+                var metrics = mlContext.Regression.Evaluate(data: predictions, labelColumnName: "Label", scoreColumnName: "Score");
                 ConsoleHelper.PrintRegressionMetrics(trainer.value.ToString(), metrics);
 
                 //Save the model file that can be used by any application
@@ -93,7 +97,7 @@ namespace BikeSharingDemand
 
                 Console.WriteLine($"================== Visualize/test 10 predictions for model {learner.name}Model.zip ==================");
                 //Visualize 10 tests comparing prediction with actual/observed values from the test dataset
-                ModelScoringTester.VisualizeSomePredictions(mlContext ,learner.name, TestDataLocation, predEngine, 10);
+                ModelScoringTester.VisualizeSomePredictions(mlContext, learner.name, TestDataLocation, predEngine, 10);
             }
 
             Common.ConsoleHelper.ConsolePressAnyKey();
