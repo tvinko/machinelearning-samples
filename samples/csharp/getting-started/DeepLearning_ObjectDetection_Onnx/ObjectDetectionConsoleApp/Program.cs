@@ -10,16 +10,21 @@ using ObjectDetection.DataStructures;
 
 namespace ObjectDetection
 {
-    class Program
+    public class Wrapper
     {
-        public static void Main()
-        {
-            var assetsRelativePath = @"../../../assets";
-            string assetsPath = GetAbsolutePath(assetsRelativePath);
-            var modelFilePath = Path.Combine(assetsPath, "Model", "TinyYolo2_model.onnx");
-            var imagesFolder = Path.Combine(assetsPath, "images");
-            var outputFolder = Path.Combine(assetsPath, "images", "output");
+        string modelFilePath;
+        string imagesFolder;
+        string outputFolder;
 
+        public Wrapper(string assetsPath)
+        {
+            modelFilePath = Path.Combine(assetsPath, "Model", "TinyYolo2_model.onnx");
+            imagesFolder = Path.Combine(assetsPath, "images");
+            outputFolder = Path.Combine(assetsPath, "images", "output");
+        }
+
+        public void Recognize()
+        {
             // Initialize MLContext
             MLContext mlContext = new MLContext();
 
@@ -63,17 +68,7 @@ namespace ObjectDetection
             Console.ReadLine();
         }
 
-        public static string GetAbsolutePath(string relativePath)
-        {
-            FileInfo _dataRoot = new FileInfo(typeof(Program).Assembly.Location);
-            string assemblyFolderPath = _dataRoot.Directory.FullName;
-
-            string fullPath = Path.Combine(assemblyFolderPath, relativePath);
-
-            return fullPath;
-        }
-
-        private static void DrawBoundingBox(string inputImageLocation, string outputImageLocation, string imageName, IList<YoloBoundingBox> filteredBoundingBoxes)
+        void DrawBoundingBox(string inputImageLocation, string outputImageLocation, string imageName, IList<YoloBoundingBox> filteredBoundingBoxes)
         {
             Image image = Image.FromFile(Path.Combine(inputImageLocation, imageName));
 
@@ -130,7 +125,7 @@ namespace ObjectDetection
             image.Save(Path.Combine(outputImageLocation, imageName));
         }
 
-        private static void LogDetectedObjects(string imageName, IList<YoloBoundingBox> boundingBoxes)
+        void LogDetectedObjects(string imageName, IList<YoloBoundingBox> boundingBoxes)
         {
             Console.WriteLine($".....The objects in the image {imageName} are detected as below....");
 
