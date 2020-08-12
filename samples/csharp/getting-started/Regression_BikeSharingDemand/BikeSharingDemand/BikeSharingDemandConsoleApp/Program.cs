@@ -99,8 +99,6 @@ namespace BikeSharingDemand
                 //Visualize 10 tests comparing prediction with actual/observed values from the test dataset
                 ModelScoringTester.VisualizeSomePredictions(mlContext, learner.name, TestDataLocation, predEngine, 10);
             }
-
-            Common.ConsoleHelper.ConsolePressAnyKey();
         }
     }
 }

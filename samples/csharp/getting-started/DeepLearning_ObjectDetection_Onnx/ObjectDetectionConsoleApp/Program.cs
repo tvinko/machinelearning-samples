@@ -64,8 +64,6 @@ namespace ObjectDetection
                 Console.WriteLine(ex.ToString());
             }
 
-            Console.WriteLine("========= End of Process..Hit any Key ========");
-            Console.ReadLine();
         }
 
         void DrawBoundingBox(string inputImageLocation, string outputImageLocation, string imageName, IList<YoloBoundingBox> filteredBoundingBoxes)
