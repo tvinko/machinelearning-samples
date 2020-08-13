@@ -167,6 +167,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSentimentAnalysis.Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSentimentAnalysis.Client", "end-to-end-apps\ScalableSentimentAnalysisBlazorWebApp\BlazorSentimentAnalysis.Client\BlazorSentimentAnalysis.Client.csproj", "{5F44B7D0-36C5-49FF-B81F-D8F70E2AE21B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectDetectionTest", "ObjectDetectionTest\ObjectDetectionTest.csproj", "{5E9ADF73-7929-4887-8621-28AB4BACF2D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -559,6 +561,14 @@ Global
 		{5F44B7D0-36C5-49FF-B81F-D8F70E2AE21B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F44B7D0-36C5-49FF-B81F-D8F70E2AE21B}.Release|x64.ActiveCfg = Release|Any CPU
 		{5F44B7D0-36C5-49FF-B81F-D8F70E2AE21B}.Release|x64.Build.0 = Release|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -644,6 +654,7 @@ Global
 		{2758A82A-66D7-4831-96AC-F70E45965D3B} = {07244E99-AD12-408A-A83B-04E03AABEEBC}
 		{A4C3C76E-8FE2-42D0-9353-BAD1F68A777C} = {2758A82A-66D7-4831-96AC-F70E45965D3B}
 		{5F44B7D0-36C5-49FF-B81F-D8F70E2AE21B} = {2758A82A-66D7-4831-96AC-F70E45965D3B}
+		{5E9ADF73-7929-4887-8621-28AB4BACF2D3} = {59A36AB2-2801-4AF3-A5AA-38B069375F4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98369941-33DD-450C-A410-B9A91C8CDE91}

@@ -23,8 +23,9 @@ namespace ObjectDetection
             outputFolder = Path.Combine(assetsPath, "images", "output");
         }
 
-        public void Recognize()
+        public string Recognize()
         {
+            Dictionary<string, List<DetectionResult>> result = new Dictionary<string, List<DetectionResult>>();
             // Initialize MLContext
             MLContext mlContext = new MLContext();
 
@@ -56,12 +57,20 @@ namespace ObjectDetection
 
                     DrawBoundingBox(imagesFolder, outputFolder, imageFileName, detectedObjects);
 
+                    List<DetectionResult> detectedResults = new List<DetectionResult>();
+                    foreach (var detObject in detectedObjects)
+                        detectedResults.Add(new DetectionResult(detObject.Label, detObject.Confidence));
+
+
                     LogDetectedObjects(imageFileName, detectedObjects);
+                    result.Add(imageFileName, detectedResults);
                 }
+                return Newtonsoft.Json.JsonConvert.SerializeObject(result);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                return null;
             }
 
         }
