@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   
   <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
