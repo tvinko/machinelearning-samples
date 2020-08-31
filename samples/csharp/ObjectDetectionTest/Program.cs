@@ -9,7 +9,6 @@ namespace ObjectDetectionTest
         {
             ObjectDetection objectDetection = new ObjectDetection("assets/images","assets/images/output");
             objectDetection.Detect();
-        
         }
     }
 }
