@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace ObjectDetection.YoloParser
+namespace Algonia.ML.YoloParser
 {
     class YoloOutputParser
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.ML.Data;
 
-namespace ObjectDetection.DataStructures
+namespace Algonia.ML.DataStructures
 {
     public class ImageNetPrediction
     {

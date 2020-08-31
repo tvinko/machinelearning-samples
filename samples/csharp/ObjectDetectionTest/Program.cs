@@ -1,5 +1,5 @@
-﻿using ObjectDetection;
-using System;
+﻿using System;
+using Algonia.ML;
 
 namespace ObjectDetectionTest
 {
@@ -7,8 +7,9 @@ namespace ObjectDetectionTest
     {
         static void Main(string[] args)
         {
-            Wrapper objectDetection = new Wrapper("assets");
-            objectDetection.Recognize();
+            ObjectDetection objectDetection = new ObjectDetection("assets/images","assets/images/output");
+            objectDetection.Detect();
+        
         }
     }
 }

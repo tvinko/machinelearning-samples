@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ObjectDetection
+namespace Algonia.ML
 {
     internal class DetectionResult
     {

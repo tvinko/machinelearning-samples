@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ObjectDetection.YoloParser
+namespace Algonia.ML.YoloParser
 {
     public class BoundingBoxDimensions : DimensionsBase { }
 

@@ -1,4 +1,4 @@
-﻿namespace ObjectDetection.YoloParser
+﻿namespace Algonia.ML.YoloParser
 {
     public class DimensionsBase
     {

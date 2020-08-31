@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Algonia.ML.DataStructures;
+using Algonia.ML.YoloParser;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using ObjectDetection.DataStructures;
-using ObjectDetection.YoloParser;
 
-namespace ObjectDetection
+namespace Algonia.ML
 {
     class OnnxModelScorer
     {
