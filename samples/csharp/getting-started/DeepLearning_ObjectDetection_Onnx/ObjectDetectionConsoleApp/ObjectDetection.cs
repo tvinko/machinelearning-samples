@@ -12,7 +12,7 @@ namespace Algonia.ML
 {
     public class ObjectDetection
     {
-        string _modelFilePath = Path.Combine("libs", ".algonia", "ObjectDetection", "TinyYolo2_model.onnx");
+        string _modelFilePath = Path.Combine("libs", "algonia", "ObjectDetection", "TinyYolo2_model.onnx");
         string _imagesFolder;
         string _outputFolder;
 
