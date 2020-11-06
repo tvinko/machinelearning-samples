@@ -7,6 +7,7 @@ using System.Linq;
 using Microsoft.ML;
 using Algonia.ML.DataStructures;
 using Algonia.ML.YoloParser;
+using Newtonsoft.Json;
 
 namespace Algonia.ML
 {
@@ -24,7 +25,7 @@ namespace Algonia.ML
 
         public string Detect()
         {
-            Dictionary<string, List<DetectionResult>> result = new Dictionary<string, List<DetectionResult>>();
+            List<DetectionResult> result = new List<DetectionResult>();
             // Initialize MLContext
             MLContext mlContext = new MLContext();
 
@@ -56,22 +57,21 @@ namespace Algonia.ML
 
                     DrawBoundingBox(_imagesFolder, _outputFolder, imageFileName, detectedObjects);
 
-                    List<DetectionResult> detectedResults = new List<DetectionResult>();
-                    foreach (var detObject in detectedObjects)
-                        detectedResults.Add(new DetectionResult(detObject.Label, detObject.Confidence));
+                    DetectionResult detectionResult = new DetectionResult(imageFileName);
 
+                    foreach (var detObject in detectedObjects)
+                        detectionResult.DetectedObjects.Add(new DetectedObjects(detObject.Label, detObject.Confidence));
 
                     LogDetectedObjects(imageFileName, detectedObjects);
-                    result.Add(imageFileName, detectedResults);
+                    result.Add(detectionResult);
                 }
-                return Newtonsoft.Json.JsonConvert.SerializeObject(result);
+                return JsonConvert.SerializeObject(result);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 return null;
             }
-
         }
 
         void DrawBoundingBox(string inputImageLocation, string outputImageLocation, string imageName, IList<YoloBoundingBox> filteredBoundingBoxes)

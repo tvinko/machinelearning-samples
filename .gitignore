@@ -328,3 +328,4 @@ ASALocalRun/
 
 # macOS
 .DS_Store
+/samples/csharp/ObjectDetectionTest/libs/algonia/ObjectDetection/TinyYolo2_model.onnx
